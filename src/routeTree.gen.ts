@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AutoRouteImport } from './routes/auto'
+import { Route as BusinessRouteImport } from './routes/business'
+import { Route as CondoRouteImport } from './routes/condo'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as LifeRouteImport } from './routes/life'
+import { Route as RentersRouteImport } from './routes/renters'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AutoRoute = AutoRouteImport.update({
+  id: '/auto',
+  path: '/auto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessRoute = BusinessRouteImport.update({
+  id: '/business',
+  path: '/business',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CondoRoute = CondoRouteImport.update({
+  id: '/condo',
+  path: '/condo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LifeRoute = LifeRouteImport.update({
+  id: '/life',
+  path: '/life',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RentersRoute = RentersRouteImport.update({
+  id: '/renters',
+  path: '/renters',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auto': typeof AutoRoute
+  '/business': typeof BusinessRoute
+  '/condo': typeof CondoRoute
+  '/contact': typeof ContactRoute
+  '/life': typeof LifeRoute
+  '/renters': typeof RentersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auto': typeof AutoRoute
+  '/business': typeof BusinessRoute
+  '/condo': typeof CondoRoute
+  '/contact': typeof ContactRoute
+  '/life': typeof LifeRoute
+  '/renters': typeof RentersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auto': typeof AutoRoute
+  '/business': typeof BusinessRoute
+  '/condo': typeof CondoRoute
+  '/contact': typeof ContactRoute
+  '/life': typeof LifeRoute
+  '/renters': typeof RentersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/auto' | '/business' | '/condo' | '/contact' | '/life' | '/renters'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/auto' | '/business' | '/condo' | '/contact' | '/life' | '/renters'
+  id:
+    | '__root__'
+    | '/'
+    | '/auto'
+    | '/business'
+    | '/condo'
+    | '/contact'
+    | '/life'
+    | '/renters'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AutoRoute: typeof AutoRoute
+  BusinessRoute: typeof BusinessRoute
+  CondoRoute: typeof CondoRoute
+  ContactRoute: typeof ContactRoute
+  LifeRoute: typeof LifeRoute
+  RentersRoute: typeof RentersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auto': {
+      id: '/auto'
+      path: '/auto'
+      fullPath: '/auto'
+      preLoaderRoute: typeof AutoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business': {
+      id: '/business'
+      path: '/business'
+      fullPath: '/business'
+      preLoaderRoute: typeof BusinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/condo': {
+      id: '/condo'
+      path: '/condo'
+      fullPath: '/condo'
+      preLoaderRoute: typeof CondoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/life': {
+      id: '/life'
+      path: '/life'
+      fullPath: '/life'
+      preLoaderRoute: typeof LifeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/renters': {
+      id: '/renters'
+      path: '/renters'
+      fullPath: '/renters'
+      preLoaderRoute: typeof RentersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AutoRoute: AutoRoute,
+  BusinessRoute: BusinessRoute,
+  CondoRoute: CondoRoute,
+  ContactRoute: ContactRoute,
+  LifeRoute: LifeRoute,
+  RentersRoute: RentersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
